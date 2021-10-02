@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* 
+      hola();
+      function hola() {
+        console.log("Hola");
+      }
+      const name = function (params) {
+        console.log(params);
+      }
+      name('will'); */
+
+      const persona = {
+        name: "Willian",
+        apellido: "Vallecilla",
+        contacto: {
+          email: "will@gmail.com",
+          cellphone: 3054751128,
+        },
+        parents: ["Gloria Estella Riascos", "Joaquín Antonio Vallecilla"],
+        sayMyName: function () {
+          return `Hi, my name is : ${this.name} ${this.apellido} `;
+        },
+      };
+      const parents = ["Gloria Estella Riascos", "Joaquín Antonio Vallecilla"];
+      /*  for (const i of parents) {
+        console.log(i)
+      } */
+
+      //console.log(persona.sayMyName());
+      /* for (const key in persona) {
+        
+          console.log(`${key}${persona[key]}`)
+      }
+ */
+      /* for (const key in persona) {
+
+        console.log(`Key:${key} Value: ${persona[key]}`);
+      } */
+      /* 
+      let darling = "Es una gordita bella, sensual, me gusta hablar con ella";
+      for (const i of darling) {
+        console.log(i)
+      } */
+
+      /*--------------------Manejo de Errores en JS---------------------------*/
+      /* 
+      try {
+        nomada.apellido;
+        console.log(`Hola soy el try, mi función es intentar ejecutar el código
+                    dentro de este bloque`);
+      } catch (error) {
+        console.log(`Hola soy el catch, mi función es capturar un error en caso tal de que 
+                    exista al momento de ejecutar el TRY 
+                    ${error}`);
+      } */
+
+      /*----------------------------------------Errores personalizados---------------------------------------*/
+      /* 
+try {
+  let number = '20f';
+  
+  if (isNaN(number)) {
+    throw new Error(`Dato ingresado no es un Número`);
+  }
+  console.log(number * number);
+} catch (error) {
+
+  console.log(`Error capturado : ${error}`);
+  
+} */
+      /* ------------------------DEsestructuración------------------------------- */
+
+      /* const n = [1,2,3,4,5,6];
+
+let [n1,,,n4,,] = n;
+
+console.log(n1,n4);
+ */
+      /*---------------------------------Operador rest y spread------------------------------------------*/
+
+      /* 
+El opereador rest recibe parámetros infinitos
+*/
+
+      let suma = (a, b, ...c) => {
+        let resultado = a + b;
+
+        c.forEach((n) => {
+          resultado = +n;
+        });
+
+        return resultado;
+      };
+      /* console.log(suma(5,5,21,4343,523,3,23,24,2,25,23,2,35,646,));
+       */
+
+      const arr1 = [1, 2, 3, 4, 5];
+      const arr2 = [6, 7, 8, 9, 0];
+
+      const arr3 = [...arr1, ...arr2];
+
+      //  console.log(arr3)
+
+      /* ----------------------Clases----------------------------- */
+
+      class Animal {
+        constructor(nombre, genero) {
+          this.nombre = nombre;
+          this.genero = genero;
+        }
+
+        //Métodos
+
+        sonar() {
+          console.log(`Hola MTF`);
+        }
+
+        saludar() {
+          console.log(`Hola, me llamo ${this.nombre}`);
+        }
+        ladrar(){
+          console.log('Vivo estoy,hago sonidos');
+        }
+      }
+
+      class Perro extends Animal{
+        constructor(nombre,genero,tamanio){
+          super(nombre,genero);
+
+          this.tamanio = tamanio;
+          this.raza = null;
+
+        }
+        ladrar(){
+          console.log('guauu guauuuu,Let me put my penny in your fucking pussy');
+        }
+
+        static queEres(){
+          console.log('Soy tu Perra David');
+        }
+
+        get getRaza(){
+          return this.raza;
+        }
+
+        set setRaza(raza){
+          this.raza = raza;
+          return this.raza;
+        }
+        
+      }
+    
+    
+   /*    Perro.queEres();
+      const scooby  = new Perro ('Scooby','Macho','Gigante');
+      console.log(scooby.getRaza);
+      scooby.setRaza = 'Gran Danés';
+      console.log(scooby.getRaza);
+      console.log(scooby)
+ */
+
+   /*    const claudio = new Animal('Gallo Claudio', 'Macho');
+      scooby.ladrar();
+      scooby.sonar();
+      console.log(`Hola soy ${scooby.tamanio}`);
+      claudio.sonar();
+      claudio.saludar();
+      claudio.ladrar() */
+
+
+/* --------------------Operador corto circuito------------------------------------ */
+
+/* console.log('' || 'Valor de la derecha')
+console.log('' && 'Valor de la derecha') */
+
+/* --------------------Expresiones Regulares----------------------------------- */
+
+let string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+let regExp = new RegExp("nisi","");
+let regExp2 = /in/;
+/* 
+console.log(regExp.test(string));
+console.log(regExp2.exec(string)); */
+
+/* --------------------------------Ejercicios----------------------------------- */
+
+//1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+
+
+const contarCadena = (cadena=undefined) =>{
+
+  if (!cadena) return console.warn("Debes ingresar la cadena a contar"); 
+  
+  if(typeof cadena !== "string") return console.error("El valor ingresado no es el tipo deseado");
+
+  console.log(`Tamaño de la cade ${cadena.length}`)
+}
+/* contarCadena("") */;
+
+
+
+
+
+//2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
+
+const partirCadena = (cadena=undefined,longitud = undefined) =>{
+
+if (!cadena) return console.warn("Debes ingresar la cadena a contar"); 
+
+if(typeof cadena !== "string") return console.error("El valor ingresado no es el tipo deseado");
+
+console.log(`${cadena.slice(0, longitud)}`);
+}
+
+//partirCadena("Hola Mundo",4);
+
+
+
+
+
+//3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
+
+const convertirString = (cadena = undefined) => {
+
+  if (!cadena) return console.warn("Debes ingresar la caden a  convertir"); 
+  if(typeof cadena === "string") console.log(cadena.split(" "));
+ 
+}
+
+//convertirString("Hola que tal");
+
+//4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
+
+const repeatString = (cadena = undefined) =>{
+
+  if (!cadena) return console.warn("Debes ingresar la cadena  repetir"); 
+  if(typeof cadena !== "string") return console.log("Dato ingresado no es un string");
+
+  console.log(cadena.repeat(3));
+}
+//repeatString("Hola mundo ");
+
+//5) Programa un función que invierta las palabras de unca cadena de texto, pe. miFuncion("Hola mundo") devolverá "odnuM aloH".
+
+const invertirString = ( cadena = undefined ) => {
+
+  let arrString;
+  let inversa = [];
+  if (!cadena) return console.warn("Debes ingresar la cadena  repetir"); 
+ 
+  if(typeof cadena !== "string") return console.log("Tl tipo de dato ingresado no es un string");
+/*inversa = cadena.split("").reverse().join("");
+  console.log(inversa); */
+
+  arrString = cadena.split("");
+  let size  ;
+
+  for (let i = arrString.length -1 ; i >= 0; i--) {
+       inversa.push(arrString[i]);
+  }
+  console.log(inversa.join(""));
+}
+
+//invertirString("Hola Mundo");
+
+//6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe, miFuncion("Hola mundo adios mundo", "mundo") devolverá 2.
+
+const countString = (cadena = undefined) => {
+
+  let regExp = /mundo/ig;
+
+  if (!cadena) return console.warn("Debes ingresar la cadena  repetir"); 
+  if(typeof cadena !== "string") return console.error("Dato ingresado no es un string");
+
+  let find = cadena.match(regExp);
+
+  console.log(`Se entro la palabra 'mundo ' => ${find.length} veces en la cadena `);
+
+
+}
+
+/* let posicion = cadena.indexOf("mundo")
+, counter = 0
+, nCoincidencias = 0;
+  while( posicion != -1){
+    counter ++;
+ 
+    posicion = cadena.indexOf("mundo", posicion + 1);
+    if (posicion != -1) {
+      nCoincidencias ++;
+    }
+
+  }
+  console.log(nCoincidencias);
+} */
+//countString("Hola mundo adios  mundo");
+
+
+//7) Programa una función que valide si una palabra es palíndroma, pe. miFuncion("Salas") devolverá true.
+
+const palindroma = ( cadena = undefined ) => {
+
+  if (!cadena) return console.warn("Debes ingresar la cadena  repetir"); 
+  if(typeof cadena !== "string") return console.log("Dato ingresado no es un string");
+  
+  const reverseString = cadena.split("").reverse().join("");
+  
+  console.log((reverseString == cadena ) ? `La palabra ${cadena} es PALÌNDROMA`:`La palabra ${cadena} no es PALÌNDROMA`);
+
+  /* const reverseString = cadena.split("");
+  let reverse = [];
+
+  for (let i = reverseString.length -1; i >= 0; i--) {
+    reverse.push(reverseString[i]);  
+  }
+  console.log(( reverse.join("") == cadena ? `La palabra ${cadena} es PALÌNDROMA`:`La palabra ${cadena} no es PALÌNDROMA` )); */
+  
+  
+}
+palindroma("salas")
+
+
+//8) Programa una función que elimine cierto patrón de caractéres de un texto dado, pe. miFuncion("xyz1,xyz2,xyz3,xyz4,xyz5,xyz") devolverá "1,2,3,4,5"
+
+
+const replace = ( cadena = undefined ) => {
+
+  if (!cadena) return console.warn("Debes ingresar la cadena  repetir"); 
+  if(typeof cadena !== "string") return console.log("Dato ingresado no es un string");
+  
+  let exp = /xyz/ig
+
+  console.log(cadena.replace(exp,"").slice(0,-1));
+
+}
+//replace("xyz1,xyz2,xyz3,xyz4,xyz5,xyz");
+
+
+//9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
+
+
+//10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.
+
+
+//11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
